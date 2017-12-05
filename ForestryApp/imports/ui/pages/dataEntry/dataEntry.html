@@ -8,8 +8,8 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label for="sel1">Select Title:</label>
-                    <select class="form-control" id="sel1">
+                    <label for="title">Select Title:</label>
+                    <select class="form-control" id="title">
                         <option>Mr.</option>
                         <option>Mrs.</option>
                         <option>Ms.</option>
@@ -18,19 +18,19 @@
                     </select>
                 </div>
 
-                <form>
+                <form class="newContact">
                     <div class="form-row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="First name">
+                            <input type="text" id = "fName" class="form-control" placeholder="First name">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Last name">
+                            <input type="text" id = "lName" class="form-control" placeholder="Last name">
                         </div>
                     </div>
                     <div>
 
                         <br>
-                    <input type="text" class="form-control" placeholder="Company">
+                    <input type="text" id = "company" class="company form-control" placeholder="Company">
                     </div>
                     <br>
 
@@ -45,9 +45,6 @@
 </template>
 
 
-<template name="task">
-      <li>{{text}}</li>
-    </template>
 
 
 
