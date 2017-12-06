@@ -9,7 +9,24 @@
         </div>
         <div class="contact-section">
             <div class="container">
+                <div class="col-md-6">
+                <div class="form-group ">
+                    <label for="companySelect">Add New Payment</label>
+                    <select class="form-control" id="companySelect">
 
+                        {{#each comps}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                    <div class="col-md-6 nopad">
+                    <div class="form-group">
+                        <label for="currAcres">New Amount</label>
+                        <input type="number" class="form-control" id="currAcres" placeholder=" Enter New Amount">
+                    </div>
+                        <button type="button" class="btn btn-primary btn-lg newAmount">Add Amount</button>
+                    </div>
+                </div>
+                </div>
     {{> reactiveTable collection=collection settings=tableSettings class="table table-bordered table-hover"}}
             </div>
         </div>

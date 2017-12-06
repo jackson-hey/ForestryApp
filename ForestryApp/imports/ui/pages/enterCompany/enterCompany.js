@@ -30,6 +30,7 @@ Template.enterCompany.events({
      Companies.insert({                     prevAcres: document.getElementById('prevAcres').value,
                                             currAcres: document.getElementById('currAcres').value,
                                             name: document.getElementById('compName').value,
+                                            received: 0,
                                             createdAt: new Date()
 
         });
