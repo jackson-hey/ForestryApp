@@ -5,6 +5,7 @@ import './contacts/contacts.html'
 import './reports/reports.html'
 import './dataEntry/dataEntry.html'
 import './home/home.html'
+import './enterCompany/enterCompany.html'
 
 
 FlowRouter.route('/', {
@@ -19,14 +20,20 @@ FlowRouter.route('/contacts', {
   }
 });
 
-FlowRouter.route('/reports', {
+FlowRouter.route('/status', {
   action: function() {
     BlazeLayout.render('reports');
   }
 });
 
-FlowRouter.route('/dataEntry', {
+FlowRouter.route('/editContact', {
   action: function() {
     BlazeLayout.render('dataEntry');
+  }
+});
+
+FlowRouter.route('/editCompany', {
+  action: function() {
+    BlazeLayout.render('enterCompany');
   }
 });

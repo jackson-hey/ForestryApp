@@ -23,3 +23,5 @@ kadira:flow-router
 kadira:blaze-layout
 twbs:bootstrap
 chart:chart
+session
+aslagle:reactive-table

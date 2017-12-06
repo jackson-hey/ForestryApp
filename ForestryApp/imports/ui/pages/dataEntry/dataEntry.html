@@ -1,47 +1,139 @@
 <template name="dataEntry">
 
 
-    <h1>Data Entry</h1>
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="./dataEntry.css" rel="stylesheet">
 
-    <div class="reporting">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="title">Select Title:</label>
-                    <select class="form-control" id="title">
-                        <option>Mr.</option>
-                        <option>Mrs.</option>
-                        <option>Ms.</option>
-                        <option>Dean</option>
-                        <option>Doctor</option>
-                    </select>
-                </div>
+    <section id="contact">
+        <div class="section-content">
+            <h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s"
+                                             data-wow-duration="2s"> Update Contact List</span></h1>
+        </div>
 
-                <form class="newContact">
-                    <div class="form-row">
-                        <div class="col">
-                            <input type="text" id = "fName" class="form-control" placeholder="First name">
-                        </div>
-                        <div class="col">
-                            <input type="text" id = "lName" class="form-control" placeholder="Last name">
-                        </div>
-                    </div>
-                    <div>
-
-                        <br>
-                    <input type="text" id = "company" class="company form-control" placeholder="Company">
-                    </div>
-                    <br>
-
-                    <button type="button" class="submit btn btn-primary btn-lg">Submit</button>
+        <div class="contact-section">
+            <div class="container">
+                <form>
+        <div class="form-group">
+            <label for="title">Edit Existing Contact</label>
+            <select class="form-control" id="contactSelect">
+                <option></option>
+                {{#each categories}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary btn-lg newContact">New Contact</button>
                 </form>
             </div>
-            <div class="col-6">
+        </div>
+        <div class="contact-section">
+            <div class="container">
+                <form>
+
+                    {{#if isTrue}}
+                    <!--{{#if createMode}}-->
+                    <div class="col-md-6 form-line">
+
+
+                        <div class="form-group">
+
+                            <label for="title">Select Title:</label>
+                            <select class="form-control" id="title">
+                                <option>Mr.</option>
+                                <option>Mrs.</option>
+                                <option>Ms.</option>
+                                <option>Dean</option>
+                                <option>Dr.</option>
+                                <option>President</option>
+                                <option>Representative</option>
+                                <option>Senator</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="fName">First Name</label>
+                            <input type="text" class="form-control" id="fName" placeholder=" Enter First Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="lName">Last Name</label>
+                            <input type="text" class="form-control" id="lName" placeholder=" Enter Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email"
+                                   placeholder=" Enter Email id">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" class="form-control" id="company"
+                                   placeholder=" Enter Company Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="businessTelephone">Business No.</label>
+                            <input type="tel" class="form-control" id="businessTelephone"
+                                   placeholder=" Enter Business Number.">
+                        </div>
+                        <div class="form-group">
+                            <label for="ext">Extension.</label>
+                            <input type="tel" class="form-control" id="ext"
+                                   placeholder=" Enter Extension(If Any).">
+                        </div>
+                        <div class="form-group">
+                            <label for="mobileTelephone">Mobile No.</label>
+                            <input type="tel" class="form-control" id="mobileTelephone"
+                                   placeholder=" Enter Mobile Number.">
+                        </div>
+                        <div class="form-group">
+                            <label for="fax">Fax.</label>
+                            <input type="tel" class="form-control" id="fax"
+                                   placeholder=" Enter Fax Number.">
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="description"> Address</label>
+                            <br>
+                            <div class="form-group">
+                                <label for="street1">Street 1</label>
+                                <input type="text" class="form-control" id="street1" placeholder=" Enter Street">
+                            </div>
+                            <div class="form-group">
+                                <label for="street2">Street 2</label>
+                                <input type="text" class="form-control" id="street2" placeholder=" Enter Street">
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" id="city" placeholder=" Enter City">
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State or Country</label>
+                                <input type="text" class="form-control" id="stateCountry"
+                                       placeholder=" Enter State or Country">
+                            </div>
+                            <div class="form-group">
+                                <label for="zipCode">Zip Code</label>
+                                <input type="text" class="form-control" id="zipCode" placeholder=" Enter Zip Code">
+                            </div>
+                        </div>
+                        <div>
+
+                            <button type="button" class="btn btn-default submit"><i class="fa fa-paper-plane"
+                                                                                    aria-hidden="true"></i> Save Contact
+                            </button>
+                        </div>
+
+                    </div>
+                    {{/if}}
+                </form>
+
             </div>
         </div>
-    </div>
-    </div>
+    </section>
+
 </template>
 
 
