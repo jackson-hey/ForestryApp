@@ -21,10 +21,19 @@ body {
   font-size: 18px !important;
 }
 
+#reactive-table-add-column-reactive-table-1{
+    background-color: #337ab7;
+    border: none;
+    color: black;
+    padding: 9px !important;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;}
+
 /*Contact sectiom*/
 .content-header{
   font-family: 'Arial';
-  color:#ffc266 !important;
   font-size: 45px;
 }
 

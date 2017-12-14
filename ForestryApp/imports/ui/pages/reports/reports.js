@@ -33,8 +33,8 @@ collection: function () {
         showColumnToggles: true,
        fields: [
            { key: 'name', label: 'Name' },
-           { key: 'currAcres', label: 'Current Acers' },
-           { key: 'prevAcres', label: 'Previous Acers' },
+           { key: 'currAcres', label: 'Current Acres' },
+           { key: 'prevAcres', label: 'Previous Acres' },
            { key:  'total', label: 'Amount Expected',
            fn: function (name, object) {
            var lowRate = 0.0584;
@@ -58,10 +58,10 @@ collection: function () {
             out+=500000*medRate;
             out+=acres*highRate;
             }
-                return out;
+                return out.toFixed(2);
                                          }},
          { key: 'received', label: 'Amount Received' },
-                    { key:  'percent', label: 'Percert Received',
+                    { key:  'percent', label: 'Percent Received',
            fn: function (name, object) {
            var lowRate = 0.0584;
            var medRate = 0.0533;
@@ -85,10 +85,15 @@ collection: function () {
             out+=acres*highRate;
             }
 
-                        return object.received/out + "%";
+                        return ((object.received/out).toFixed(2)*100) + "%";
                         }},
 
-          { key: 'createdAt', label: 'Last Updated' }
+          { key: 'createdAt', label: 'Last Updated',
+          fn: function (name, object) {
+//                return moment(object.createdAt).format('MM-DD-YYYY');
+                    return object.createdAt;
+
+                                  }}
 
 
         ]
