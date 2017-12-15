@@ -86,7 +86,7 @@ collection: function () {
                                                out+=acres*highRate;
                                                }
                                                var per = object.received/out;
-                                               if(per<= 100){
+                                               if(per>= 1){
                                                return 'cellGreen';
                                                }
                                                else{
