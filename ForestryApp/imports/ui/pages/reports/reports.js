@@ -62,6 +62,38 @@ collection: function () {
                                          }},
          { key: 'received', label: 'Amount Received' },
                     { key:  'percent', label: 'Percent Received',
+
+                                 cellClass: function (value, object) {
+                                    var lowRate = 0.0584;
+                                              var medRate = 0.0533;
+                                              var highRate = 0.0508;
+                                              var out = 0;
+                                              var acres = object.currAcres;
+                                              if(acres<500000){
+                                               out+=acres*lowRate;
+
+                                              }
+                                              else if(acres<1000000){
+                                               out+=500000*lowRate;
+                                               acres-=500000;
+                                               out+=acres*medRate;
+
+                                              }
+                                               else{
+                                               out+=500000*lowRate;
+                                               acres-=1000000;
+                                               out+=500000*medRate;
+                                               out+=acres*highRate;
+                                               }
+                                               var per = object.received/out;
+                                               if(per<= 100){
+                                               return 'cellGreen';
+                                               }
+                                               else{
+                                               return 'cellRed';
+                                               }
+                                               },
+
            fn: function (name, object) {
            var lowRate = 0.0584;
            var medRate = 0.0533;
@@ -89,12 +121,10 @@ collection: function () {
                         }},
 
           { key: 'createdAt', label: 'Last Updated',
-          fn: function (name, object) {
-//                return moment(object.createdAt).format('MM-DD-YYYY');
-                    return object.createdAt;
-
-                                  }}
-
+          }
+//          fn: function (name, object) {
+//                    return object.createdAt;
+//                                  }
 
         ]
       };
@@ -114,7 +144,7 @@ Template.reports.events({
                 name: name
                 }).fetch());
          var id = cont[0]._id;
-//                console.log(id);
+
                 var rec = parseInt(document.getElementById("currAcres").value);
 ;
                 Companies.update({_id: id},

@@ -14,7 +14,7 @@ FlowRouter.route('/', {
   }
 });
 
-FlowRouter.route('/contacts', {
+FlowRouter.route('/letters', {
   action: function() {
     BlazeLayout.render('contacts');
   }

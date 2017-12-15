@@ -21,15 +21,28 @@ body {
   font-size: 18px !important;
 }
 
+.cellRed{
+background: red !important;
+}
+.cellGreen{
+background: green !important;
+}
+
+
 #reactive-table-add-column-reactive-table-1{
-    background-color: #337ab7;
+
     border: none;
     color: black;
-    padding: 9px !important;
+    padding: 4px !important;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;}
+
+.input-group-addon{
+color:red;
+padding-right: 20px !important;
+}
 
 /*Contact sectiom*/
 .content-header{
@@ -60,7 +73,7 @@ padding: 0 !important;
 
 .table-hover{
     text-align: left;
-    background-color: #4CAF50 !important;
+    background-color: #fff !important;
     color: black !important;
 }
 .contact-section .col-md-6{
@@ -104,6 +117,16 @@ textarea.form-control {
   width: 150px;
 
 }
+
+
+.letterBtn{
+  font-size: 1.1em !important;
+  float: left;
+  width: 150px;
+
+}
+
+
 .newContact{
   font-size: 1.1em !important;
   float: left;

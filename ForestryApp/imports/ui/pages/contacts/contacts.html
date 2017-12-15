@@ -1,3 +1,46 @@
 <template name="contacts">
-<h1>Contacts</h1>
+        <div class="section-content">
+            <h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s"
+                                             data-wow-duration="2s"> Generate Letter</span></h1>
+
+        </div>
+
+
+
+
+    <div class="contact-section">
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="title">Select Contact</label>
+                    <select class="form-control" id="contactSelect">
+                        <option></option>
+                        {{#each categories}}
+                        <option value="{{this}}">{{this}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+
+
+            <div class="col-md-6 ">
+    <button type="button" class="btn btn-primary btn-lg letterBtn thanksBtn">Thanks Letter</button>
+                <div class="col-md-6 ">
+    <button type="button" class="btn btn-primary btn-lg letterBtn requestBtn">Request Letter</button>
+                </div>
+        </div>
+
+            </form>
+        </div>
+    </div>
+
+
+</template>
+
+<template name="thanksLetter">
+    <p>Auto generated thank you letter for {{name}}</p>
+    <p>Generated at {{date}}</p>
+</template>
+<template name="requestLetter">
+    <p>Auto generated request letter for {{name}}</p>
+    <p>Generated at {{date}}</p>
 </template>

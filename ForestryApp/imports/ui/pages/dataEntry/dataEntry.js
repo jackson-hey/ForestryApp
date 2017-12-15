@@ -29,6 +29,8 @@ Template.dataEntry.helpers({
 
 });
 
+
+
 Template.dataEntry.events({
   'click .submit'(event) {
     var name = document.getElementById('contactSelect').value;
