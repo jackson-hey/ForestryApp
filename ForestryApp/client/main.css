@@ -4,7 +4,7 @@ body {
   width: 100%;
   width: 100vw;
   height: 550px;
-  background:    #66c2ff !important; /* fallback for old browsers */
+  background:    #9a9b99 !important; /* fallback for old browsers */
 
     color : #fff;
   background-attachment: fixed;
