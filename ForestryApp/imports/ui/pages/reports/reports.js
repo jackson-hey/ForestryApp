@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import { Companies } from '../../../api/companiesCol.js';
-
+import { Years } from '../../../api/yearsCol.js';
 import './reports.html';
 
 Template.reports.onCreated(function dataEntryOnCreate() {
@@ -22,8 +22,12 @@ Template.reports.helpers({
         },
 
 collection: function () {
-        //console.log(Companies.findOne());
+        //console.log();
         return Companies;
+    },
+yearsCollection: function () {
+        console.log(Years.find().fetch());
+        return Years.find().fetch();
     },
 
  tableSettings : function () {
@@ -121,11 +125,13 @@ collection: function () {
                         }},
 
           { key: 'createdAt', label: 'Last Updated',
-          }
-//          fn: function (name, object) {
-//                    return object.createdAt;
-//                                  }
 
+          fn: function (name, object) {
+          var dateFormat = require('dateformat');
+          var now = object.createdAt
+         return dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
+                                  }
+}
         ]
       };
     }
@@ -135,9 +141,7 @@ Template.reports.events({
  'click .newAmount'(event) {
     var name = document.getElementById('companySelect').value;
     if(name == ""){
-
         }
-
     else {
         var cont = (Companies.find(
                 {
