@@ -89,7 +89,10 @@ height: 45px;
 #companySelect{
 height: 45px;
 }
-
+#yearSelect{
+height: 45px;
+width: 100px;
+}
 .form-line{
   border-right: 1px solid #B29999;
 }

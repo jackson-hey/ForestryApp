@@ -6,50 +6,81 @@ import { Companies } from '../../../api/companiesCol.js';
 import './enterCompany.html';
 
 Template.enterCompany.onCreated(function dataEntryOnCreate() {
-    Meteor.subscribe('companies');
+Meteor.subscribe('companies');
 
 });
 
 Template.enterCompany.helpers({
-'comps': function(){
+
+'years': function(){
      var companyList = Companies.find({}).fetch();
-     console.log(companyList);
      var outputList = [];
+     let i;
      for(i = 0; i < companyList.length; i++) {
-        outputList.push(companyList[i].name);
+        outputList.push(companyList[i].year);
      }
+    Session.set("year",0);
     return outputList;
         }
 
 });
 
+Template.companyDropdown.helpers({
+'comps': function(){
+     let outputList = [];
+     let companyList = Companies.find({}).fetch();
+            let y = Session.get("year").year;
+            for(k = 0; k<companyList.length; k++){
+            if(companyList[k].year==y){
+            for(l = 0; l<companyList[k].data.length; l++){
+                outputList.push(companyList[k].data[l].name);
+            }
+            }
+            }
+
+       return outputList;
+        }
+
+
+});
+
+
 Template.enterCompany.events({
+
+
+    "change #yearSelect": function (event, template) {
+    console.log(Companies.find({year:event.target.value}).fetch());
+    let yid = Companies.find({year:event.target.value}).fetch();
+    Session.set("year",yid[0]);
+    },
+
   'click .submit'(event) {
-    var name = document.getElementById('companySelect').value;
-    if(name == ""){
-     Companies.insert({                     prevAcres: document.getElementById('prevAcres').value,
-                                            currAcres: document.getElementById('currAcres').value,
-                                            name: document.getElementById('compName').value,
-                                            received: 0,
-                                            createdAt: new Date()
-
-        });
-
-    }
+    let cName = document.getElementById('companySelect').value;
+    let cYear = Session.get("year");
+    if(cName == ""){
+    Companies.update(
+        { _id: cYear._id},
+        {$push: {'data': {prevAcres: document.getElementById('prevAcres').value,
+                            currAcres: document.getElementById('currAcres').value,
+                            name: document.getElementById('compName').value,
+                            received: 0,
+                            createdAt: new Date()}}}
+    );
+        }
     else {
+        let index = Session.get("dataIndex");
+        console.log(stat);
         var cont = (Companies.find(
                 {
-                name: name
+                year: cYear.year
                 }).fetch());
          var id = cont[0]._id;
-                console.log(cont[0]);
-
-                Companies.update({_id: id},
-                {$set:{
-                                            prevAcres: document.getElementById('prevAcres').value,
-                                            currAcres: document.getElementById('currAcres').value,
-                                            name: document.getElementById('compName').value,
-                                            createdAt: new Date()
+                Companies.update({ "_id": id, "data.$.name:": cName},
+                { $set: {
+                                            "data.$.prevAcres": document.getElementById('prevAcres').value,
+                                            "data.$.currAcres": document.getElementById('currAcres').value,
+                                            "data.$.name": document.getElementById('compName').value,
+                                            "data.$.createdAt": new Date()
 
 
                               }}
@@ -73,19 +104,25 @@ Template.enterCompany.events({
 
 
  'change #companySelect'(event, template) {
-    var name = document.getElementById('companySelect').value;
-    if(name == ""){
+    let cName = document.getElementById('companySelect').value;
+    if(cName == ""){
 
     }
     else {
-    var comp = (Companies.find(
+
+    let comp = (Companies.find(
             {
-              name: name
+              year: Session.get("year").year
             }).fetch());
-    console.log(comp);
-    document.getElementById('compName').value = comp[0].name;
-    document.getElementById('prevAcres').value = comp[0].prevAcres;
-    document.getElementById('currAcres').value = comp[0].currAcres;
+    for(v=0;v<comp[0].data.length;v++){
+    if(comp[0].data[v].name == cName){
+        Session.set("dataIndex",v);
+        document.getElementById('compName').value = comp[0].data[v].name;
+        document.getElementById('prevAcres').value = comp[0].data[v].prevAcres;
+        document.getElementById('currAcres').value = comp[0].data[v].currAcres;
+    }
+    }
+
     }
     },
 

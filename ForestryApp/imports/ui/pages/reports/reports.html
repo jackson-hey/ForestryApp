@@ -10,17 +10,19 @@
         <div class="contact-section">
 
             <div class="container">
-                <select class="form-control" id="companySelect">
+                <div class="col-md-6">
+                    <label for="yearSelect">Year</label>
+                <select class="form-control" id="yearSelect">
 
-                    {{#each yearsCollection.int}}
+                    {{#each years}}
                     <option value="{{this}}">{{this}}</option>
                     {{/each}}
                 </select>
-                <div class="col-md-6">
+
                 <div class="form-group ">
                     <label for="companySelect">Add New Payment</label>
                     <select class="form-control" id="companySelect">
-
+                        <option></option>
                         {{#each comps}}
                         <option value="{{this}}">{{this}}</option>
                         {{/each}}
@@ -32,9 +34,12 @@
                     </div>
                         <button type="button" class="btn btn-primary btn-lg newAmount">Add Amount</button>
                     </div>
+
                 </div>
+
+
                 </div>
-    {{> reactiveTable collection=collection settings=tableSettings class="table table-bordered table-hover"}}
+                {{> reactiveTable collection=collection settings=tableSettings class="table table-bordered table-hover"}}
             </div>
         </div>
     </section>

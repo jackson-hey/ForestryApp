@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import { Companies } from '../../../api/companiesCol.js';
-import { Years } from '../../../api/yearsCol.js';
+
 import './reports.html';
 
 Template.reports.onCreated(function dataEntryOnCreate() {
@@ -12,23 +12,38 @@ Template.reports.onCreated(function dataEntryOnCreate() {
 
 Template.reports.helpers({
 'comps': function(){
-     var companyList = Companies.find({}).fetch();
-     console.log(companyList);
-     var outputList = [];
+     let outputList = [];
+     let companyList = Companies.find({}).fetch();
+            let y = Session.get("year").year;
+            for(k = 0; k<companyList.length; k++){
+            if(companyList[k].year==y){
+            for(l = 0; l<companyList[k].data.length; l++){
+                outputList.push(companyList[k].data[l].name);
+            }
+            }
+            }
+
+       return outputList;
+        },
+'years': function(){
+     let companyList = Companies.find({}).fetch();
+     let outputList = [];
      for(i = 0; i < companyList.length; i++) {
-        outputList.push(companyList[i].name);
+        outputList.push(companyList[i].year);
      }
+     Session.set("year","0");
     return outputList;
         },
 
 collection: function () {
-        //console.log();
-        return Companies;
+        let o = Session.get("year")._id;
+        let x = Companies.find({_id: o}).fetch();
+        console.log(x);
+      //  return Companies.find({_id: o}).fetch();
+       return x[0].data;
     },
-yearsCollection: function () {
-        console.log(Years.find().fetch());
-        return Years.find().fetch();
-    },
+
+
 
  tableSettings : function () {
       return {
@@ -125,8 +140,9 @@ yearsCollection: function () {
                         }},
 
           { key: 'createdAt', label: 'Last Updated',
-
           fn: function (name, object) {
+          console.log(object);
+
           var dateFormat = require('dateformat');
           var now = object.createdAt
          return dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
@@ -138,6 +154,13 @@ yearsCollection: function () {
   });
 
 Template.reports.events({
+
+  "change #yearSelect": function (event, template) {
+    let yid = Companies.find({year:event.target.value}).fetch();
+
+    Session.set("year",yid[0]);
+    },
+
  'click .newAmount'(event) {
     var name = document.getElementById('companySelect').value;
     if(name == ""){

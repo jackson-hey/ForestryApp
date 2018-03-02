@@ -1,3 +1,4 @@
+
 <template name="enterCompany">
 
 
@@ -14,13 +15,15 @@
         <div class="contact-section">
             <div class="container">
         <div class="form-group ">
-            <label for="companySelect">Edit Existing Landowner</label>
-            <select class="form-control" id="companySelect">
-                <option></option>
-                {{#each comps}}
+            <label for="yearSelect">Year</label>
+            <select class="form-control" id="yearSelect"> <option selected="selected">
+            </option>
+                {{#each years}}
                 <option value="{{this}}">{{this}}</option>
                 {{/each}}
             </select>
+            <br>
+    {{> companyDropdown}}
         </div>
         <button type="button" class="btn btn-primary btn-lg newCompany">New Landowner</button>
 
@@ -65,3 +68,14 @@
     </section>
 
 </template>
+
+<template name="companyDropdown">
+    <label for="companySelect">Edit Existing Landowner</label>
+    <select class="form-control" id="companySelect">
+        <option></option>
+        {{#each comps}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+    </select>
+</template>
+
