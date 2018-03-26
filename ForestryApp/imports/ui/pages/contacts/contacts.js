@@ -41,17 +41,16 @@ Template.thanksLetter.helpers({
 
 Template.contacts.events({
   'click .thanksBtn'(event) {
-//            Blaze.saveAsPDF(Template.thanksLetter, {
-//              filename: "thankyou.pdf", // optional, default is "document.pdf"
-//            });
-        require('buffer');
-        var arraybuffer = 'background1.jpg';
-        doc.image(new Buffer(arraybuffer));
-      var doc = new PDFDocument({size: 'A4', margin: 50});
+            Blaze.saveAsPDF(Template.thanksLetter, {
+              filename: "thankyou.pdf", // optional, default is "document.pdf"
+            });
+////        require('buffer');
+////        var arraybuffer = 'background1.jpg';
+////        doc.image(new Buffer(arraybuffer));
+////      var doc = new PDFDocument({size: 'A4', margin: 50});
 //      doc.fontSize(12);
-//      doc.image("C:\\Capstone\\project\\ForestryApp\\server\\background1.jpg", 0, 0);
 //      doc.text('PDFKit is simple', 10, 30, {align: 'center', width: 200});
-      doc.write('PDFKitExampleClientSide.pdf');
+//      doc.write('PDFKitExampleClientSide.pdf');
 },
  'click .requestBtn'(event) {
             Blaze.saveAsPDF(Template.requestTemplate, {
