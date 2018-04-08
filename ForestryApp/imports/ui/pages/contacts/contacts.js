@@ -5,7 +5,7 @@ import './contacts.html';
 
 
 import { Contacts } from '../../../api/contactCol.js';
-
+import { Companies } from '../../../api/companiesCol.js';
 
 Template.contacts.onCreated(function dataEntryOnCreate() {
 
@@ -16,6 +16,17 @@ Template.contacts.onCreated(function dataEntryOnCreate() {
 
 
 Template.contacts.helpers({
+
+'years': function(){
+     let companyList = Companies.find({}).fetch();
+     let outputList = [];
+     for(i = 0; i < companyList.length; i++) {
+        outputList.push(companyList[i].year);
+     }
+     Session.set("year","0");
+    return outputList;
+        },
+
      'categories': function(){
      var contactList = Contacts.find({}).fetch();
      var outputList = [];
@@ -24,6 +35,8 @@ Template.contacts.helpers({
      }
     return outputList;
         }
+
+
 });
 
 
