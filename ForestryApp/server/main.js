@@ -7,3 +7,4 @@ import '../imports/api/financesCol.js';
 Meteor.startup(() => {
   console.log("startup");
 });
+
