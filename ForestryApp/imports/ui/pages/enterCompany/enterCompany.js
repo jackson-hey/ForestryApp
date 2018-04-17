@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import { Companies } from '../../../api/companiesCol.js';
-
+import { updateCompany } from "../../../../lib/main.js"
 import './enterCompany.html';
 
 Template.enterCompany.onCreated(function dataEntryOnCreate() {
@@ -33,7 +33,7 @@ Template.companyDropdown.helpers({
             for(k = 0; k<companyList.length; k++){
             if(companyList[k].year==y){
             for(l = 0; l<companyList[k].data.length; l++){
-                outputList.push(companyList[k].data[l].name);
+                outputList.push(companyList[k].data[l].company);
             }
             }
             }
@@ -55,36 +55,66 @@ Template.enterCompany.events({
     },
 
   'click .submit'(event) {
+    var tierOneRate = 0.0584;
+    var tierTwoRate = 0.0533;
+    var tierThreeRate = 0.0508;
     let cName = document.getElementById('companySelect').value;
     let cYear = Session.get("year");
-    if(cName == ""){
-    Companies.update(
-        { _id: cYear._id},
-        {$push: {'data': {prevAcres: document.getElementById('prevAcres').value,
-                            currAcres: document.getElementById('currAcres').value,
-                            name: document.getElementById('compName').value,
-                            received: 0,
-                            createdAt: new Date()}}}
-    );
+    var dIndex = Session.get("dataIndex");
+    var out = 0;
+    var tierOnePayment = 0;
+    var tierTwoPayment = 0;
+    var tierThreePayment = 0;
+    var acres = document.getElementById('currAcres').value;
+    if(acres<500000){
+         out+=acres*tierOneRate;
+         tierOnePayment = out;
+
+    }
+        else if(acres<1000000){
+         out+=500000*tierOneRate;
+         tierOnePayment = out;
+         acres-=500000;
+         out+=acres*tierTwoRate;
+         tierTwoPayment = acres*tierTwoRate;
+
         }
+             else{
+             out+=500000*tierOneRate;
+             tierOnePayment = out;
+             out+=500000*tierTwoRate;
+             tierTwoPayment = 500000*tierTwoRate;
+             acres-=1000000;
+             out+=acres*tierThreeRate;
+             tierThreePayment=acres*tierThreeRate;
+     }
+    if(cName == ""){
+    Meteor.call('createCompany',
+    document.getElementById('compName').value,
+    cYear._id,
+    document.getElementById('currAcres').value,
+    document.getElementById('prevAcres').value,
+    tierOnePayment,
+    tierTwoPayment,
+    tierThreePayment,
+    out,
+    new Date());
+    }
     else {
-        let index = Session.get("dataIndex");
-        console.log(stat);
-        var cont = (Companies.find(
-                {
-                year: cYear.year
-                }).fetch());
-         var id = cont[0]._id;
-                Companies.update({ "_id": id, "data.$.name:": cName},
-                { $set: {
-                                            "data.$.prevAcres": document.getElementById('prevAcres').value,
-                                            "data.$.currAcres": document.getElementById('currAcres').value,
-                                            "data.$.name": document.getElementById('compName').value,
-                                            "data.$.createdAt": new Date()
 
+    Meteor.call('updateCompany',
+        cName,
+        cYear,
+        parseInt(document.getElementById('currAcres').value),
+        parseInt(document.getElementById('prevAcres').value),
+        tierOnePayment,
+        tierTwoPayment,
+        tierThreePayment,
+        out,
+        document.getElementById('compName').value,
+        new Date()
+     );
 
-                              }}
-                );
 
     }
         document.getElementById('companySelect').value = "";
@@ -115,9 +145,9 @@ Template.enterCompany.events({
               year: Session.get("year").year
             }).fetch());
     for(v=0;v<comp[0].data.length;v++){
-    if(comp[0].data[v].name == cName){
+    if(comp[0].data[v].company == cName){
         Session.set("dataIndex",v);
-        document.getElementById('compName').value = comp[0].data[v].name;
+        document.getElementById('compName').value = comp[0].data[v].company;
         document.getElementById('prevAcres').value = comp[0].data[v].prevAcres;
         document.getElementById('currAcres').value = comp[0].data[v].currAcres;
     }

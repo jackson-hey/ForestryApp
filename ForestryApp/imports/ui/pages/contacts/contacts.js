@@ -7,6 +7,7 @@ import './contacts.html';
 import { Contacts } from '../../../api/contactCol.js';
 import { Companies } from '../../../api/companiesCol.js';
 import { saveAs } from 'file-saver';
+import {json2csv} from "json-2-csv";
 
 Template.contacts.onCreated(function dataEntryOnCreate() {
 
@@ -55,31 +56,21 @@ Template.thanksLetter.helpers({
 
 Template.contacts.events({
   'click .thanksBtn'(event) {
-//    var rawData = Gifts.find({
-//                              receiptdate:{
-//                                         $gte: Session.get("giftsStartDate"),
-//                                         $lte: Session.get("giftsEndDate")
-//                                          }
-//                                }).fetch();
 
-//    var csv = CSV.unparse(Companies.find().fetch());
-//    var blob = new Blob([csv], {type: "text/plain;charset=utf-8;",});
-//
-//    saveAs(blob, "data.csv");
+        let yearStatus = document.getElementById('yearSelect').value;
+        Meteor.call('fetchMailData', yearStatus, function(error, result) {
+        let csv = Papa.unparse(result);
 
-//  var nameFile = 'fileDownloaded.csv';
-//  Meteor.call('download', function(err, fileContent) {
-//    if(fileContent){
-//      var blob = new Blob([fileContent], {type: "text/plain;charset=utf-8"});
-//      saveAs(blob, nameFile);
-//    }
-//  });
-var csv = CSV.parse("yeah.csv", {
-	complete: function(results) {
-		console.log("Finished:", results.data);
-	}});
-	var blob = new Blob([csv], {type: "text/plain;charset=utf-8"});
-          saveAs(blob, "text.csv");
+        console.log(result);
+
+        csv = json2csv(result,function (err, csv){
+
+               	let blob = new Blob([csv], {type: "text/csv"});
+                saveAs(blob,"Owners Managers 17-18.csv");
+
+        });
+
+        });
   },
 
  'click .requestBtn'(event) {

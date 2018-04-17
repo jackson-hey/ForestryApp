@@ -1,7 +1,7 @@
 <template name="contacts">
         <div class="section-content">
             <h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s"
-                                             data-wow-duration="2s"> Generate Letter</span></h1>
+                                             data-wow-duration="2s"> Generate Report</span></h1>
 
         </div>
 
@@ -17,36 +17,18 @@
                 </select>
                 <br>
             </div>
+            <button type="button" class="btn btn-primary btn-lg letterBtn thanksBtn">Generate</button>
+
         </div>
+
     </div>
 
 
 
 
-    <div class="contact-section">
-        <div class="container">
-            <form>
-                <div class="form-group">
-                    <label for="title">Select Contact</label>
-                    <select class="form-control" id="contactSelect">
-                        <option></option>
-                        {{#each categories}}
-                        <option value="{{this}}">{{this}}</option>
-                        {{/each}}
-                    </select>
-                </div>
 
 
-            <div class="col-md-6 ">
-    <button type="button" class="btn btn-primary btn-lg letterBtn thanksBtn">Thanks Letter</button>
-                <div class="col-md-6 ">
-    <button type="button" class="btn btn-primary btn-lg letterBtn requestBtn">Request Letter</button>
-                </div>
-        </div>
 
-            </form>
-        </div>
-    </div>
 
 
 </template>

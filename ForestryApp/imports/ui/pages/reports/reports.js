@@ -18,7 +18,7 @@ Template.reports.helpers({
             for(k = 0; k<companyList.length; k++){
             if(companyList[k].year==y){
             for(l = 0; l<companyList[k].data.length; l++){
-                outputList.push(companyList[k].data[l].name);
+                outputList.push(companyList[k].data[l].company);
             }
             }
             }
@@ -51,60 +51,14 @@ collection: function () {
         showNavigation: 'auto',
         showColumnToggles: true,
        fields: [
-           { key: 'name', label: 'Name' },
+           { key: 'company', label: 'Name' },
            { key: 'currAcres', label: 'Current Acres' },
            { key: 'prevAcres', label: 'Previous Acres' },
-           { key:  'total', label: 'Amount Expected',
-           fn: function (name, object) {
-           var lowRate = 0.0584;
-           var medRate = 0.0533;
-           var highRate = 0.0508;
-           var out = 0;
-           var acres = object.currAcres;
-           if(acres<500000){
-            out+=acres*lowRate;
-
-           }
-           else if(acres<1000000){
-            out+=500000*lowRate;
-            acres-=500000;
-            out+=acres*medRate;
-
-           }
-            else{
-            out+=500000*lowRate;
-            acres-=1000000;
-            out+=500000*medRate;
-            out+=acres*highRate;
-            }
-                return out.toFixed(2);
-                                         }},
-         { key: 'received', label: 'Amount Received' },
-                    { key:  'percent', label: 'Percent Received',
-
+           { key:  'Amount', label: 'Expected'},
+           { key: 'paid', label: 'Received' },
+           { key:  'percent', label: 'Percent Received',
                                  cellClass: function (value, object) {
-                                    var lowRate = 0.0584;
-                                              var medRate = 0.0533;
-                                              var highRate = 0.0508;
-                                              var out = 0;
-                                              var acres = object.currAcres;
-                                              if(acres<500000){
-                                               out+=acres*lowRate;
-
-                                              }
-                                              else if(acres<1000000){
-                                               out+=500000*lowRate;
-                                               acres-=500000;
-                                               out+=acres*medRate;
-
-                                              }
-                                               else{
-                                               out+=500000*lowRate;
-                                               acres-=1000000;
-                                               out+=500000*medRate;
-                                               out+=acres*highRate;
-                                               }
-                                               var per = object.received/out;
+                                               let per = object.paid/object.Amount;
                                                if(per>= 1){
                                                return 'cellGreen';
                                                }
@@ -114,35 +68,15 @@ collection: function () {
                                                },
 
            fn: function (name, object) {
-           var lowRate = 0.0584;
-           var medRate = 0.0533;
-           var highRate = 0.0508;
-           var out = 0;
-           var acres = object.currAcres;
-           if(acres<500000){
-            out+=acres*lowRate;
+           let calc = object.paid/object.Amount;
+           calc = (calc * 100)
+           calc = calc.toFixed(2);
 
-           }
-           else if(acres<1000000){
-            out+=500000*lowRate;
-            acres-=500000;
-            out+=acres*medRate;
-
-           }
-            else{
-            out+=500000*lowRate;
-            acres-=1000000;
-            out+=500000*medRate;
-            out+=acres*highRate;
-            }
-
-                        return ((object.received/out).toFixed(2)*100) + "%";
+                        return calc + "%";
                         }},
 
           { key: 'createdAt', label: 'Last Updated',
           fn: function (name, object) {
-          console.log(object);
-
           var dateFormat = require('dateformat');
           var now = object.createdAt
          return dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
@@ -166,20 +100,9 @@ Template.reports.events({
     if(name == ""){
         }
     else {
-        var cont = (Companies.find(
-                {
-                name: name
-                }).fetch());
-         var id = cont[0]._id;
-
-                var rec = parseInt(document.getElementById("currAcres").value);
-;
-                Companies.update({_id: id},
-                {$inc: {received: rec}
-
-                              }
-                );
-
+                let pay = parseInt(document.getElementById("currAcres").value);
+                let ye = Session.get("year");
+                Meteor.call('updatePayment',ye._id,name,pay)
     }
         document.getElementById('currAcres').value = null;
 

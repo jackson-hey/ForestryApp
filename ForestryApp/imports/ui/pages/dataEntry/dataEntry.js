@@ -17,7 +17,7 @@ Template.dataEntry.helpers({
      var contactList = Contacts.find({}).fetch();
      var outputList = [];
      for(i = 0; i < contactList.length; i++) {
-        outputList.push(contactList[i].fName + " " + contactList[i].lName + " (" + contactList[i].company + ") ");
+        outputList.push(contactList[i].fname + " " + contactList[i].lname + " (" + contactList[i].company + ") ");
      }
     return outputList;
         },
@@ -35,38 +35,37 @@ Template.dataEntry.events({
   'click .submit'(event) {
     var name = document.getElementById('contactSelect').value;
     if(name == ""){
-     Contacts.insert({ lName: document.getElementById('lName').value,
-                      fName: document.getElementById('fName').value,
-                      company: document.getElementById('company').value,
-                      title: document.getElementById('title').value,
-                      email: document.getElementById('email').value,
-                      businessTelephone: document.getElementById('businessTelephone').value,
-                      ext: document.getElementById('ext').value,
-                      mobileTelephone: document.getElementById('mobileTelephone').value,
-                      fax: document.getElementById('fax').value,
-                      street1: document.getElementById('street1').value,
-                      street2: document.getElementById('street2').value,
-                      city: document.getElementById('city').value,
-                      stateCountry: document.getElementById('stateCountry').value,
-                      zipCode: document.getElementById('zipCode').value,
-                      createdAt: new Date()
+     Contacts.insert({ lname: document.getElementById('lName').value,
+                           fname: document.getElementById('fName').value,
+                           company: document.getElementById('company').value,
+                           title: document.getElementById('title').value,
+                           email: document.getElementById('email').value,
+                           businessTelephone: document.getElementById('businessTelephone').value,
+                           ext: document.getElementById('ext').value,
+                           mobileTelephone: document.getElementById('mobileTelephone').value,
+                           fax: document.getElementById('fax').value,
+                           street1: document.getElementById('street1').value,
+                           street2: document.getElementById('street2').value,
+                           city: document.getElementById('city').value,
+                           stateCountry: document.getElementById('stateCountry').value,
+                           zipCode: document.getElementById('zipCode').value,
+                           createdAt: new Date()
 
-        });
-
+             });
     }
     else {
     var split =  name.split(" ");
         var cont = (Contacts.find(
                 {
-                fName: split[0],
-                lName: split[1]
+                fname: split[0],
+                lname: split[1]
                 }).fetch());
          var id = cont[0]._id;
                 console.log(cont[0]);
 
                 Contacts.update({_id: id},
-                {$set:{ lName: document.getElementById('lName').value,
-                                            fName: document.getElementById('fName').value,
+                {$set:{ lname: document.getElementById('lName').value,
+                                            fname: document.getElementById('fName').value,
                                             company: document.getElementById('company').value,
                                             title: document.getElementById('title').value,
                                             email: document.getElementById('email').value,
@@ -83,7 +82,6 @@ Template.dataEntry.events({
 
                               }}
                 );
-                console.log("updated");
     }
 
     document.getElementById('fName').value = null;
@@ -131,12 +129,11 @@ Template.dataEntry.events({
     var split =  name.split(" ");
     var cont = (Contacts.find(
             {
-              fName: split[0],
-              lName: split[1]
+              fname: split[0],
+              lname: split[1]
             }).fetch());
-    console.log(cont);
-    document.getElementById('fName').value = cont[0].fName;
-    document.getElementById('lName').value = cont[0].lName;
+    document.getElementById('fName').value = cont[0].fname;
+    document.getElementById('lName').value = cont[0].lname;
     document.getElementById('company').value = cont[0].company;
     document.getElementById('title').value = cont[0].title;
     document.getElementById('email').value = cont[0].email;
