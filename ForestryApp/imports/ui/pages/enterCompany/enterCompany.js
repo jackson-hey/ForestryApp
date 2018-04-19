@@ -98,6 +98,7 @@ Template.enterCompany.events({
     tierTwoPayment,
     tierThreePayment,
     out,
+    document.getElementById('unitSelect').value,
     new Date());
     }
     else {
@@ -112,6 +113,7 @@ Template.enterCompany.events({
         tierThreePayment,
         out,
         document.getElementById('compName').value,
+        document.getElementById('unitSelect').value,
         new Date()
      );
 

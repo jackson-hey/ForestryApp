@@ -48,21 +48,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="enterCompany.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="enterCompany.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/imports/ui/pages/enterCompany/enterCompany.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="867">
-              <caret line="51" column="15" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="15" />
+            <state relative-caret-position="328">
+              <caret line="97" column="19" lean-forward="true" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="enterCompany.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/pages/enterCompany/enterCompany.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="45" column="67" lean-forward="false" selection-start-line="45" selection-start-column="57" selection-end-line="45" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+            <state relative-caret-position="639">
+              <caret line="118" column="40" lean-forward="false" selection-start-line="118" selection-start-column="40" selection-end-line="118" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -89,16 +99,6 @@
                 <marker date="1523924487474" expanded="true" signature="882:887" ph="..." />
                 <marker date="1523924487474" expanded="true" signature="883:885" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contacts.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imports/ui/pages/contacts/contacts.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="63" column="20" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -197,7 +197,6 @@
         <option value="$PROJECT_DIR$/imports/api/financesCol.js" />
         <option value="$PROJECT_DIR$/imports/api/yearsCol.js" />
         <option value="$PROJECT_DIR$/client/main.css" />
-        <option value="$PROJECT_DIR$/imports/ui/pages/enterCompany/enterCompany.html" />
         <option value="$PROJECT_DIR$/imports/ui/pages/contacts/thankYouTemp.html" />
         <option value="$PROJECT_DIR$/imports/ui/pages/contacts/requestTemp.html" />
         <option value="$PROJECT_DIR$/imports/ui/pages/contacts/f945ca24-1dd9-11e8-b174-0cc47a792c0a_id_f945ca24-1dd9-11e8-b174-0cc47a792c0a.html" />
@@ -206,13 +205,14 @@
         <option value="$PROJECT_DIR$/imports/ui/pages/routes.js" />
         <option value="$PROJECT_DIR$/server/main.js" />
         <option value="$PROJECT_DIR$/node_modules/export-csv/README.md" />
-        <option value="$PROJECT_DIR$/imports/ui/pages/enterCompany/enterCompany.js" />
         <option value="$PROJECT_DIR$/imports/ui/pages/dataEntry/dataEntry.js" />
         <option value="$PROJECT_DIR$/imports/ui/pages/reports/reports.html" />
         <option value="$PROJECT_DIR$/imports/ui/pages/reports/reports.js" />
         <option value="$PROJECT_DIR$/imports/ui/pages/contacts/contacts.html" />
         <option value="$PROJECT_DIR$/imports/ui/pages/contacts/contacts.js" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/enterCompany/enterCompany.html" />
         <option value="$PROJECT_DIR$/lib/main.js" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/enterCompany/enterCompany.js" />
       </list>
     </option>
   </component>
@@ -237,6 +237,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -455,9 +458,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -953,13 +953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/enterCompany/enterCompany.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="49" column="51" lean-forward="false" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/pages/reports/reports.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
@@ -1008,14 +1001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/enterCompany/enterCompany.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="15" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/pages/contacts/contacts.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1031,16 +1016,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/pages/contacts/contacts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
+        <state relative-caret-position="1071">
           <caret line="63" column="20" lean-forward="false" selection-start-line="63" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/enterCompany/enterCompany.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="45" column="67" lean-forward="false" selection-start-line="45" selection-start-column="57" selection-end-line="45" selection-end-column="67" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="30" column="21" lean-forward="false" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+        <state relative-caret-position="639">
+          <caret line="118" column="40" lean-forward="false" selection-start-line="118" selection-start-column="40" selection-end-line="118" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/enterCompany/enterCompany.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="97" column="19" lean-forward="true" selection-start-line="97" selection-start-column="19" selection-end-line="97" selection-end-column="19" />
           <folding />
         </state>
       </provider>
