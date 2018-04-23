@@ -19,12 +19,8 @@ Meteor.methods({
     var report = [];
     let yearData = Companies.find({year:yearInt}).fetch();
     let index;
-    console.log(yearData);
      for(v=0;v<yearData[0].data.length;v++){
-            console.log(v);
            let compName = yearData[0].data[v].company;
-                       console.log(compName);
-
            let contactData = Contacts.find({company:compName}).fetch();
 
            if(contactData.length!==0){
@@ -36,21 +32,21 @@ Meteor.methods({
     let acres1 = 0;
     let acres2 = 0;
     let acres3 = 0;
-    if(acres <= 500,000){
+    if(acres <= 500000){
     acres1 = acres;
     }
-    else{
-    acres1 = 500,000;
-    acres -= 500,000;
-    if(acres <= 500,000){
-    acres2 = acres;
+    else if(acres <= 1000000) {
+    acres1 = 500000;
+    acres -= 500000;
+    acres2 = acres
     }
-    else{
-    acres2 = 500,000;
-    acres -= 500,000;
+    else if(acres <= 1500000){
+    acres1 = 500000;
+    acres2 = 500000;
+    acres -= 1000000;
     acres3 = acres;
     }
-    }
+
 
     let x = {
         fname: contactData[0].fname,
@@ -72,7 +68,7 @@ Meteor.methods({
         "first": yearData[0].data[index].tierOne,
         "second": yearData[0].data[index].tierTwo,
         "third": yearData[0].data[index].tierThree,
-        "Dues":  Math.round(yearData[0].data[index].Amount)
+        "Dues":  yearData[0].data[index].Amount.toFixed(2)
         };
         if(x.paid>=x.Amount){
         report.push(x);
@@ -87,11 +83,8 @@ Meteor.methods({
           var report = [];
           let yearData = Companies.find({year:yearInt}).fetch();
           let index;
-          console.log(yearData);
            for(v=0;v<yearData[0].data.length;v++){
-                  console.log(v);
                  let compName = yearData[0].data[v].company;
-                             console.log(compName);
 
                  let contactData = Contacts.find({company:compName}).fetch();
 
@@ -104,18 +97,18 @@ Meteor.methods({
           let acres1 = 0;
           let acres2 = 0;
           let acres3 = 0;
-          if(acres <= 500,000){
+          if(acres <= 500000){
           acres1 = acres;
           }
           else{
-          acres1 = 500,000;
-          acres -= 500,000;
-          if(acres <= 500,000){
+          acres1 = 500000;
+          acres -= 500000;
+          if(acres <= 500000){
           acres2 = acres;
           }
           else{
-          acres2 = 500,000;
-          acres -= 500,000;
+          acres2 = 500000;
+          acres -= 500000;
           acres3 = acres;
           }
           }
@@ -140,7 +133,7 @@ Meteor.methods({
               "first": yearData[0].data[index].tierOne,
               "second": yearData[0].data[index].tierTwo,
               "third": yearData[0].data[index].tierThree,
-              "Dues":  Math.round(yearData[0].data[index].Amount)
+              "Dues":  yearData[0].data[index].Amount.toFixed(2)
               };
               if(units==x.units){
               report.push(x);
