@@ -42,17 +42,6 @@ Template.contacts.helpers({
 });
 
 
-Template.thanksLetter.helpers({
-     'name': function(){
-     var name = document.getElementById('contactSelect').value;
-    return name;
-        },
-     'date': function(){
-        var date = new Date();
-
-         return date;
-             },
-});
 
 Template.contacts.events({
   'click .thanksBtn'(event) {
@@ -60,9 +49,6 @@ Template.contacts.events({
         let yearStatus = document.getElementById('yearSelect').value;
         Meteor.call('fetchMailData', yearStatus, function(error, result) {
         let csv = Papa.unparse(result);
-
-        console.log(result);
-
         csv = json2csv(result,function (err, csv){
 
                	let blob = new Blob([csv], {type: "text/csv"});
@@ -73,10 +59,19 @@ Template.contacts.events({
         });
   },
 
- 'click .requestBtn'(event) {
-            Blaze.saveAsPDF(Template.requestTemplate, {
-              filename: "request.pdf", // optional, default is "document.pdf"
+    'click .requestBtn'(event) {
 
-            });
-}
+          let yearStatus = document.getElementById('yearSelect').value;
+          let units = document.getElementById('unitSelect').value;
+          Meteor.call('fetchRequestData', yearStatus, units, function(error, result) {
+          let csv = Papa.unparse(result);
+          csv = json2csv(result,function (err, csv){
+
+                  let blob = new Blob([csv], {type: "text/csv"});
+                  saveAs(blob,"Owners Managers 17-18.csv");
+
+          });
+
+          });
+    }
 });

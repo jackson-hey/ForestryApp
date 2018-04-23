@@ -74,15 +74,84 @@ Meteor.methods({
         "third": yearData[0].data[index].tierThree,
         "Dues":  Math.round(yearData[0].data[index].Amount)
         };
+        if(x.paid>=x.Amount){
         report.push(x);
-
+        }
+}
  }
 
-        }
-
         return report;
+      },
 
-    },
+        fetchRequestData: function(yearInt, units) {
+          var report = [];
+          let yearData = Companies.find({year:yearInt}).fetch();
+          let index;
+          console.log(yearData);
+           for(v=0;v<yearData[0].data.length;v++){
+                  console.log(v);
+                 let compName = yearData[0].data[v].company;
+                             console.log(compName);
+
+                 let contactData = Contacts.find({company:compName}).fetch();
+
+                 if(contactData.length!==0){
+                 index = v;
+
+
+          let buildAddress = contactData[0].street1 + " " + contactData[0].city + " " + contactData[0].stateCountry + " " + contactData[0].zipCode;
+          let acres = yearData[0].data[index].currAcres;
+          let acres1 = 0;
+          let acres2 = 0;
+          let acres3 = 0;
+          if(acres <= 500,000){
+          acres1 = acres;
+          }
+          else{
+          acres1 = 500,000;
+          acres -= 500,000;
+          if(acres <= 500,000){
+          acres2 = acres;
+          }
+          else{
+          acres2 = 500,000;
+          acres -= 500,000;
+          acres3 = acres;
+          }
+          }
+
+          let x = {
+              fname: contactData[0].fname,
+              lname: contactData[0].lname,
+              company: contactData[0].company,
+              address: buildAddress,
+              email: contactData[0].email,
+              Amount: yearData[0].data[index].Amount,
+              paid: yearData[0].data[index].paid,
+              "Current Amount": yearData[0].data[index].currAcres,
+              units: yearData[0].data[index].units,
+              "Acres 0-500k": acres1,
+              "Acres 500k-1MM": acres2,
+              "Acres 1MM+": acres3,
+              "Amount 0-500k": yearData[0].data[index].tierOne,
+              "Amount 500k-1MM": yearData[0].data[index].tierTwo,
+              "Amount 1MM+": yearData[0].data[index].tierThree,
+              "TOTAL TO BE INVOICED":  yearData[0].data[index].Amount,
+              "first": yearData[0].data[index].tierOne,
+              "second": yearData[0].data[index].tierTwo,
+              "third": yearData[0].data[index].tierThree,
+              "Dues":  Math.round(yearData[0].data[index].Amount)
+              };
+              if(units==x.units){
+              report.push(x);
+              }
+      }
+       }
+
+
+
+              return report;
+            },
 
   updateCompany: function(cName,cYear,currA,prevA,t1,t2,t3,amt,cmp,unit,cAt){
 
