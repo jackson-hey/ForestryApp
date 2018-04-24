@@ -83,7 +83,7 @@ Template.dataEntry.events({
                               }}
                 );
     }
-
+    document.location.reload(true);
     document.getElementById('fName').value = null;
     document.getElementById('lName').value = null;
     document.getElementById('company').value = null;
@@ -103,6 +103,7 @@ Template.dataEntry.events({
     },
 
     'click .newContact'(event) {
+
         document.getElementById('contactSelect').value = "";
         document.getElementById('fName').value = null;
         document.getElementById('lName').value = null;

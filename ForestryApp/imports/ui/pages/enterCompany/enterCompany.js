@@ -136,6 +136,7 @@ Template.enterCompany.events({
         document.getElementById('prevAcres').value = null;
         document.getElementById('fixedAmount').value = null;
         document.getElementById('unitSelect').value = "Acres";
+        document.location.reload(true);
 
 
 
@@ -167,6 +168,8 @@ Template.enterCompany.events({
         document.getElementById('compName').value = comp[0].data[v].company;
         document.getElementById('prevAcres').value = comp[0].data[v].prevAcres;
         document.getElementById('currAcres').value = comp[0].data[v].currAcres;
+        document.getElementById('fixedAmount').value = parseInt(comp[0].data[v].Amount);
+        document.getElementById('unitSelect').value = comp[0].data[v].units;
     }
     }
 

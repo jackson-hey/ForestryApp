@@ -91,7 +91,7 @@ Meteor.methods({
                  index = v;
 
 
-          let buildAddress = contactData[0].street1 + " " + contactData[0].city + " " + contactData[0].stateCountry + " " + contactData[0].zipCode;
+          var buildAddress = contactData[0].street1 + " " + contactData[0].city + " " + contactData[0].stateCountry + " " + contactData[0].zipCode;
           let acres = yearData[0].data[index].currAcres;
           let acres1 = 0;
           let acres2 = 0;
@@ -111,8 +111,36 @@ Meteor.methods({
           acres3 = acres;
           }
           }
+            var x = {}
+          if(units=="Fixed"){
 
-          let x = {
+           x = {
+                        fname: contactData[0].fname,
+                        lname: contactData[0].lname,
+                        company: contactData[0].company,
+                        address: buildAddress,
+                        email: contactData[0].email,
+                        "Amount 15-16":  parseFloat(yearData[0].data[index].Amount),
+                        units: yearData[0].data[index].units
+                        };
+          }
+          else if(units=="Tons"){
+                      x = {
+                                  fname: contactData[0].fname,
+                                  lname: contactData[0].lname,
+                                  company: contactData[0].company,
+                                  email: contactData[0].email,
+                                  address: buildAddress,
+                                  "Amount FY16-17": yearData[0].data[index].currAcres,
+                                  "Current Ton Amount 17-18": yearData[0].data[index].currAcres,
+                                  "units": yearData[0].data[index].units,
+                                  "Rate 0.0127": 0.0127,
+                                  "Amount": parseFloat(yearData[0].data[index].Amount)
+
+                                  };
+          }
+          else{
+            x = {
               fname: contactData[0].fname,
               lname: contactData[0].lname,
               company: contactData[0].company,
@@ -132,17 +160,19 @@ Meteor.methods({
               "first": yearData[0].data[index].tierOne,
               "second": yearData[0].data[index].tierTwo,
               "third": yearData[0].data[index].tierThree,
-              "Dues":  yearData[0].data[index].Amount.toFixed(2)
+              "Dues":  parseFloat(yearData[0].data[index].Amount)
               };
+              }
+
               if(units==x.units){
               report.push(x);
               }
+              x = {};
       }
        }
 
-
-
               return report;
+
             },
 
   updateCompany: function(cName,cYear,currA,prevA,t1,t2,t3,amt,cmp,unit,cAt){
