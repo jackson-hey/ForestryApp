@@ -58,6 +58,7 @@ Template.enterCompany.events({
     var tierOneRate = 0.0584;
     var tierTwoRate = 0.0533;
     var tierThreeRate = 0.0508;
+    var tonsRate = .0127;
     let cName = document.getElementById('companySelect').value;
     let cYear = Session.get("year");
     var dIndex = Session.get("dataIndex");
@@ -66,6 +67,13 @@ Template.enterCompany.events({
     var tierTwoPayment = 0;
     var tierThreePayment = 0;
     var acres = document.getElementById('currAcres').value;
+    if(unit=="Tons"){
+    out = acres * tonsRate;
+    }
+    else if(unit=="Fixed"){
+    out = document.getElementById('fixedAmount').value;
+    }
+    else{
     if(acres<500000){
          out+=acres*tierOneRate;
          tierOnePayment = out;
@@ -88,6 +96,7 @@ Template.enterCompany.events({
              out+=acres*tierThreeRate;
              tierThreePayment=acres*tierThreeRate;
      }
+     }
     if(cName == ""){
     Meteor.call('createCompany',
     document.getElementById('compName').value,
@@ -99,6 +108,7 @@ Template.enterCompany.events({
     tierThreePayment,
     out,
     document.getElementById('unitSelect').value,
+    document.getElementById('fixedAmount').value,
     new Date());
     }
     else {
@@ -123,6 +133,8 @@ Template.enterCompany.events({
         document.getElementById('compName').value = null;
         document.getElementById('currAcres').value = null;
         document.getElementById('prevAcres').value = null;
+        document.getElementById('fixedAmount').value = null;
+
 
     },
 

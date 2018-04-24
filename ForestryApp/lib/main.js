@@ -75,7 +75,6 @@ Meteor.methods({
         }
 }
  }
-
         return report;
       },
 
@@ -167,13 +166,14 @@ Meteor.methods({
                "data.$.createdAt" : cAt} }
 );
   },
-    createCompany: function(nme,cYear,currA,prevA,t1,t2,t3,amt,unit,cAt){
+    createCompany: function(nme,cYear,currA,prevA,t1,t2,t3,amt,unit,fAmt,cAt){
+    if(unit=="Acres"){
         Companies.update(
             { _id: cYear},
             {$push: {'data': {prevAcres: prevA,
                                 currAcres: currA,
                                 company: nme,
-                                Amount: 0,
+                                Amount: amt,
                                 tierTwo: t2,
                                 tierOne: t1,
                                 tierThree: t3,
@@ -181,7 +181,39 @@ Meteor.methods({
                                 paid: 0,
                                 createdAt: cAt}}}
         );
+        }
+        else if(unit=="Tons"){
+         Companies.update(
+                    { _id: cYear},
+                    {$push: {'data': {prevAcres: prevA,
+                                        currAcres: currA,
+                                        company: nme,
+                                        Amount: amt,
+                                        tierTwo: t2,
+                                        tierOne: t1,
+                                        tierThree: t3,
+                                        units: unit,
+                                        paid: 0,
+                                        createdAt: cAt}}}
+                );
+        }
+        else if(unit=="Fixed"){
+                 Companies.update(
+                            { _id: cYear},
+                            {$push: {'data': {prevAcres: prevA,
+                                                currAcres: currA,
+                                                company: nme,
+                                                Amount: fAmt,
+                                                tierTwo: t2,
+                                                tierOne: t1,
+                                                tierThree: t3,
+                                                units: unit,
+                                                paid: 0,
+                                                createdAt: cAt}}}
+                        );
+                }
 },
+
   updatePayment: function(yearID,compN,paymnt){
 
              Companies.update(

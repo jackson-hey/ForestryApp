@@ -43,12 +43,16 @@
                         </div>
                         <br>
                         <label for="unitSelect">Units</label>
-                        <select class="form-control" id="unitSelect"> <option selected="selected">
+                        <select class="form-control" id="unitSelect"> <option selected="Acres">Acres
                         </option>
-                            <option value="Acres">Acres</option>
+
                             <option value="Tons">Tons</option>
                             <option value="Fixed">Fixed</option>
                         </select>
+
+                        <br>
+                        <label for="fixedAmount">Dollar Amount (Fixed Only)</label>
+                        <input type="number" class="form-control" id="fixedAmount" placeholder="Enter Fixed Amount">
 
                     </div>
                     <div class="col-md-6">
@@ -59,7 +63,7 @@
                                 <input type="number" class="form-control" id="prevAcres" placeholder=" Enter Previous Acers">
                             </div>
                             <div class="form-group">
-                                <label for="currAcres">Current Acres</label>
+                                <label for="currAcres">Current Acres/Tons</label>
                                 <input type="number" class="form-control" id="currAcres" placeholder=" Enter Current Acers">
                             </div>
                         </div>
