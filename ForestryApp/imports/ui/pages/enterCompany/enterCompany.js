@@ -61,6 +61,7 @@ Template.enterCompany.events({
     var tonsRate = .0127;
     let cName = document.getElementById('companySelect').value;
     let cYear = Session.get("year");
+    let unit = document.getElementById('unitSelect').value;
     var dIndex = Session.get("dataIndex");
     var out = 0;
     var tierOnePayment = 0;
@@ -134,6 +135,8 @@ Template.enterCompany.events({
         document.getElementById('currAcres').value = null;
         document.getElementById('prevAcres').value = null;
         document.getElementById('fixedAmount').value = null;
+        document.getElementById('unitSelect').value = "Acres";
+
 
 
     },
