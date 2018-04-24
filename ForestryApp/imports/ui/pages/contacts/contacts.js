@@ -68,7 +68,20 @@ Template.contacts.events({
           csv = json2csv(result,function (err, csv){
 
                   let blob = new Blob([csv], {type: "text/csv"});
+                  if(units=="Acres"){
+
                   saveAs(blob,"Owners Managers 17-18.csv");
+                  }
+                  if(units=="Fixed"){
+
+                                   saveAs(blob,"Fixed 18-19.csv");
+                                   }
+                    if(units=="Tons"){
+
+                                     saveAs(blob,"Producers 17-18.csv");
+                                     }
+
+
 
           });
 

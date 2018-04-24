@@ -68,7 +68,7 @@ Meteor.methods({
         "first": yearData[0].data[index].tierOne,
         "second": yearData[0].data[index].tierTwo,
         "third": yearData[0].data[index].tierThree,
-        "Dues":  yearData[0].data[index].Amount.toFixed(2)
+        "Dues":  parseFloat(yearData[0].data[index].Amount)
         };
         if(x.paid>=x.Amount){
         report.push(x);
