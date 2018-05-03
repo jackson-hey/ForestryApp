@@ -1,18 +1,11 @@
 <template name="dataEntry">
 
-
-    <link href="https://fonts.googleapis.com/css?family=Oleo+Script:400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Teko:400,700" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="./dataEntry.css" rel="stylesheet">
-
     <section id="contact">
         <div class="section-content">
-            <h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s"
-                                             data-wow-duration="2s"> Update Contact List</span></h1>
+            <h1 class="section-header"> Update Contact List</h1>
         </div>
 
-        <div class="contact-section">
+        <div class="contact-section titleSel">
             <div class="container">
                 <form>
         <div class="form-group">
@@ -23,8 +16,11 @@
                 <option value="{{this}}">{{this}}</option>
                 {{/each}}
             </select>
+
+
         </div>
-        <button type="button" class="btn btn-primary btn-lg newContact">New Contact</button>
+
+        <button type="button" class="btn success btn-lg newContact">New Contact</button>
                 </form>
             </div>
         </div>
@@ -39,7 +35,7 @@
 
                         <div class="form-group">
 
-                            <label for="title">Select Title:</label>
+                            <label for="title">Select Title</label>
                             <select class="form-control" id="title">
                                 <option></option>
                                 <option>Mr.</option>
@@ -122,7 +118,7 @@
                         </div>
                         <div>
 
-                            <button type="button" class="btn btn-default submit"><i class="fa fa-paper-plane"
+                            <button type="button" class="btn success btn-lg submit"><i class="fa fa-paper-plane"
                                                                                     aria-hidden="true"></i> Save Contact
                             </button>
                         </div>
