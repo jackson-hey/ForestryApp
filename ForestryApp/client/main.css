@@ -46,3 +46,45 @@ font-size: 14pt !important;
 .titleSel{
 padding-left: 2%;
 }
+
+#yearSelect{
+height: 40px;
+width: 155px;
+}
+
+#companySelect{
+height: 40px;
+width: 60%;
+}
+
+.nopad{
+padding-left: 0 !important;
+border-left: 0 !important;
+}
+
+.input-group-addon{
+width:60px;
+background-color: lightgrey;
+}
+
+.dropdown-toggle{
+border: 1px solid #ccc;
+border-radius: 4px;
+background-color: lightgrey;
+height: 45;
+width: 80px;
+}
+.page-number-count{
+padding-left: 7px;
+}
+
+#unitSelect{
+height: 40px;
+width: 155px;
+}
+
+.letterBtn{
+height: 50px;
+width: 130px;
+font-size: 14px !important;
+}

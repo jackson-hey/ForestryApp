@@ -1,8 +1,7 @@
 <template name="reports">
     <section id="contact">
         <div class="section-content">
-            <h1 class="section-header"><span class="content-header wow fadeIn " data-wow-delay="0.2s"
-                                             data-wow-duration="2s"> Payment Status Report</span></h1>
+            <h1 class="section-header">Payment Status Report</h1>
         </div>
         <div class="contact-section">
 
@@ -15,7 +14,7 @@
                     <option value="{{this}}">{{this}}</option>
                     {{/each}}
                 </select>
-
+                    <br>
                 <div class="form-group ">
                     <label for="companySelect">Add New Payment</label>
                     <select class="form-control" id="companySelect">
@@ -26,10 +25,11 @@
                     </select>
                     <div class="col-md-6 nopad">
                     <div class="form-group">
+                        <br>
                         <label for="currAcres">New Amount</label>
                         <input type="number" class="form-control" id="currAcres" placeholder=" Enter New Amount">
                     </div>
-                        <button type="button" class="btn btn-primary btn-lg newAmount">Add Amount</button>
+                        <button type="button" class="btn success btn-lg newAmount">Add Payment</button>
                     </div>
 
                 </div>
