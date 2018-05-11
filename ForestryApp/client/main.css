@@ -52,6 +52,11 @@ height: 40px;
 width: 155px;
 }
 
+#newYearSelect{
+height: 40px;
+width: 155px;
+}
+
 #companySelect{
 height: 40px;
 width: 60%;
@@ -82,6 +87,11 @@ padding-left: 7px;
 height: 40px;
 width: 155px;
 }
+#copyYearSelect{
+height: 40px;
+width: 155px;
+}
+
 
 .letterBtn{
 height: 50px;
