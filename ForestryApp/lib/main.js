@@ -250,7 +250,15 @@ Meteor.methods({
                { _id: yearID, "data.company": compN},
                { $inc: {   "data.$.paid" : paymnt}}
             );
-             }
+             },
+
+    createNewYear: function(yearName,copyName){
+
+              Companies.insert(
+              {"year" : yearName,
+              "data": []
+              });
+              }
 
 
 });

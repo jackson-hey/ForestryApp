@@ -54,7 +54,10 @@ collection: function () {
            { key: 'company', label: 'Name' },
            { key: 'currAcres', label: 'Current Acres' },
            { key: 'prevAcres', label: 'Previous Acres' },
-           { key:  'Amount', label: 'Expected'},
+           { key:  'Amount', label: 'Expected',
+             fn: function (name, object) {
+             return object.Amount.toFixed(2);
+                                     }},
            { key: 'paid', label: 'Received' },
            { key:  'percent', label: 'Percent Received',
                                  cellClass: function (value, object) {
@@ -78,7 +81,7 @@ collection: function () {
           { key: 'createdAt', label: 'Last Updated',
           fn: function (name, object) {
           var dateFormat = require('dateformat');
-          var now = object.createdAt
+          var now = object.createdAt;
          return dateFormat(now, "dddd, mmmm dS, yyyy, h:MM:ss TT");
                                   }
 }

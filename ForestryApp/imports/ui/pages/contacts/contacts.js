@@ -59,6 +59,15 @@ Template.contacts.events({
         });
   },
 
+    'click .yearBtn'(event) {
+          let yearCopy = document.getElementById('copyYearSelect').value;
+          let newYear = document.getElementById('NYsel').value;
+          Meteor.call('createNewYear', newYear, yearCopy, function(error, result) {
+          });
+
+          },
+
+
     'click .requestBtn'(event) {
 
           let yearStatus = document.getElementById('yearSelect').value;
