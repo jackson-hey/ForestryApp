@@ -254,9 +254,15 @@ Meteor.methods({
 
     createNewYear: function(yearName,copyName){
 
+               var copy = (Companies.find(
+              {
+              year: copyName
+              }).fetch());
+              let x = copy[0].data;
+
               Companies.insert(
               {"year" : yearName,
-              "data": []
+              "data": x
               });
               }
 

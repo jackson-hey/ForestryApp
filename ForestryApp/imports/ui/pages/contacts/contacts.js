@@ -74,20 +74,21 @@ Template.contacts.events({
           let units = document.getElementById('unitSelect').value;
           Meteor.call('fetchRequestData', yearStatus, units, function(error, result) {
           let csv = Papa.unparse(result);
+
           csv = json2csv(result,function (err, csv){
 
                   let blob = new Blob([csv], {type: "text/csv"});
                   if(units=="Acres"){
 
-                  saveAs(blob,"Owners Managers 17-18.csv");
+                  saveAs(blob,"Landowners" + yearStatus + ".csv");
                   }
                   if(units=="Fixed"){
 
-                                   saveAs(blob,"Fixed 18-19.csv");
+                                   saveAs(blob,"Fixed" + yearStatus + ".csv");
                                    }
                     if(units=="Tons"){
 
-                                     saveAs(blob,"Producers 17-18.csv");
+                                     saveAs(blob,"Producers" + yearStatus + ".csv");
                                      }
 
 

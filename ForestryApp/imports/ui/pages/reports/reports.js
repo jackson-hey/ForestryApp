@@ -28,6 +28,7 @@ Template.reports.helpers({
 'years': function(){
      let companyList = Companies.find({}).fetch();
      let outputList = [];
+     outputList.push(" ");
      for(i = 0; i < companyList.length; i++) {
         outputList.push(companyList[i].year);
      }
@@ -38,7 +39,7 @@ Template.reports.helpers({
 collection: function () {
         let o = Session.get("year")._id;
         let x = Companies.find({_id: o}).fetch();
-        console.log(x);
+
       //  return Companies.find({_id: o}).fetch();
        return x[0].data;
     },
