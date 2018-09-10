@@ -228,12 +228,13 @@ Meteor.methods({
                 );
         }
         else if(unit=="Fixed"){
+        let fmt = parseFloat(fAmt);
                  Companies.update(
                             { _id: cYear},
                             {$push: {'data': {prevAcres: prevA,
                                                 currAcres: currA,
                                                 company: nme,
-                                                Amount: fAmt,
+                                                Amount: fmt,
                                                 tierTwo: t2,
                                                 tierOne: t1,
                                                 tierThree: t3,
